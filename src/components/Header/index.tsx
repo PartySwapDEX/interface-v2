@@ -1,30 +1,25 @@
 import { ChainId, TokenAmount } from '@partyswap-libs/sdk'
-import React, { useState, useEffect } from 'react'
-import { Text } from 'rebass'
-import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-
+import { NavLink } from 'react-router-dom'
+import { Text } from 'rebass'
 import styled from 'styled-components'
-
-import Logo from '../../assets/svg/icon.svg'
-import LogoDark from '../../assets/svg/icon.svg'
-import { useActiveWeb3React } from '../../hooks'
-import { useDarkModeManager } from '../../state/user/hooks'
-import { useETHBalances, useAggregatePartyBalance } from '../../state/wallet/hooks'
 import { CountUp } from 'use-count-up'
-import { TYPE, ExternalLink } from '../../theme'
-
-import { RedCard } from '../Card'
-import Settings from '../Settings'
-import Menu from '../Menu'
-
-import Row, { RowFixed } from '../Row'
-import Web3Status from '../Web3Status'
-import Modal from '../Modal'
-import PartyBalanceContent from './PartyBalanceContent'
-import usePrevious from '../../hooks/usePrevious'
+import PartySwapIcon from '../../assets/svg/partyswapIcon.svg'
+import V2Icon from '../../assets/svg/v2Icon.svg'
 import { ANALYTICS_PAGE, TOKEN_MIGRATION_PAGE } from '../../constants'
+import { useActiveWeb3React } from '../../hooks'
+import usePrevious from '../../hooks/usePrevious'
+import { useAggregatePartyBalance, useETHBalances } from '../../state/wallet/hooks'
+import { ExternalLink, TYPE } from '../../theme'
+import { RedCard } from '../Card'
+import Menu from '../Menu'
+import Modal from '../Modal'
+import Row, { RowFixed } from '../Row'
+import Settings from '../Settings'
+import Web3Status from '../Web3Status'
+import PartyBalanceContent from './PartyBalanceContent'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -291,12 +286,19 @@ const BalanceText = styled(Text)`
 
 const Title = styled.a`
   display: flex;
+  position: relative;
   align-items: center;
   pointer-events: auto;
   justify-self: flex-start;
   margin-right: 12px;
-  img {
+  img.logo {
     height: 2rem;
+    margin-right: 3.25rem
+  }
+  img.logo-v2 {
+    position: absolute;
+    right: 0
+    height: 2.5rem;
   }
   :hover {
     cursor: pointer;
@@ -428,7 +430,7 @@ export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [isDark] = useDarkModeManager()
+  // const [isDark] = useDarkModeManager()
 
   const aggregateBalance: TokenAmount | undefined = useAggregatePartyBalance()
 
@@ -454,7 +456,8 @@ export default function Header() {
       </Modal>
       <HeaderRow>
         <Title href=".">
-          <img src={isDark ? LogoDark : Logo} alt="logo" />
+          <img src={PartySwapIcon} className="logo" alt="logo" />
+          <img src={V2Icon} className="logo-v2" alt="logo-v2" />
         </Title>
         <HeaderLinks>
           <Burger className="drawer" open={open} setOpen={setOpen} />
