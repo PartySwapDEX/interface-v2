@@ -4,7 +4,7 @@ import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components'
-import { ReactComponent as BannerImage } from '../../assets/svg/swap-banner.svg'
+import BannerImage from '../../assets/images/swap-banner.png'
 import imageLeftDark from '../../assets/svg/swap-image-left-dark.svg'
 import imageLeft from '../../assets/svg/swap-image-left.svg'
 import imageRightDark from '../../assets/svg/swap-image-right-dark.svg'
@@ -86,7 +86,7 @@ const Banner = styled.a<{ show: boolean }>`
   z-index: 1;
   margin-top: 2rem;
 
-  svg {
+  img {
     border-radius: 1rem;
   }
 `
@@ -539,7 +539,7 @@ export default function Swap() {
       <AdvancedSwapDetailsDropdown trade={trade} />
 
       <Banner href="#/party/1" show={Boolean(trade)}>
-        <BannerImage />
+        <img src={BannerImage} alt="Stake GB and earn $PARTY" />
       </Banner>
     </PageWrapper>
   )
