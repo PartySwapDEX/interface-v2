@@ -7,12 +7,11 @@ import styled, { ThemeContext } from 'styled-components'
 import { ReactComponent as ArrowDown } from '../../assets/svg/arrow-down.svg'
 import { ReactComponent as BadgeSVG } from '../../assets/svg/badge.svg'
 import { ReactComponent as ExternalLinkSVG } from '../../assets/svg/external-link.svg'
-import { ReactComponent as JacuzziImageDark } from '../../assets/svg/jacuzzi-hero-dark.svg'
-import { ReactComponent as JacuzziImage } from '../../assets/svg/jacuzzi-hero.svg'
+import JacuzziImageDark from '../../assets/svg/jacuzzi-hero-dark.svg'
+import JacuzziImage from '../../assets/svg/jacuzzi-hero.svg'
+import JacuzziTokenImage from '../../assets/svg/jacuzzi-token.svg'
 import patternDarkMode from '../../assets/svg/swap-pattern-dark.svg'
 import pattern from '../../assets/svg/swap-pattern.svg'
-import TokenVideoDark from '../../assets/video/party-icon-3d-dark.mp4'
-import TokenVideo from '../../assets/video/party-icon-3d.mp4'
 import { ButtonPrimary } from '../../components/Button'
 import JacuzziLeaveModal from '../../components/jacuzzi/JacuzziLeaveModal'
 import JacuzziStakingModal from '../../components/jacuzzi/JacuzziStakingModal'
@@ -112,11 +111,6 @@ const ButtonGroup = styled.div`
 
 const ExtLink = styled(ExternalLinkSVG)`
   margin-left: 0.125em;
-`
-
-const PartyTokenVideo = styled.video`
-  width: 100%;
-  border-radius: 50%;
 `
 
 const BadgeIcon = styled(BadgeSVG)`
@@ -332,21 +326,13 @@ export default function Jacuzzi() {
         {isDarkMode ? <BackgroundImage className="darkMode" /> : <BackgroundImage />}
         <VersionTabs active={'v2'} pathname="/jacuzzi" />
         <div className="jacuzzi-container">
-          <div className="jacuzzi-media">{isDarkMode ? <JacuzziImageDark /> : <JacuzziImage />}</div>
+          <div className="jacuzzi-media">
+            {isDarkMode ? <img src={JacuzziImageDark} alt="Jacuzzi dark" /> : <img src={JacuzziImage} alt="Jacuzzi" />}
+          </div>
           <Item className="poolsGrid-item">
             <div className="poolsGrid-item-content">
               <div className="poolsGrid-item-header">
-                {isDarkMode ? (
-                  <div>
-                    <PartyTokenVideo autoPlay loop muted playsInline className="dark-mode">
-                      <source src={TokenVideoDark} type="video/mp4" />
-                    </PartyTokenVideo>
-                  </div>
-                ) : (
-                  <PartyTokenVideo autoPlay loop muted playsInline>
-                    <source src={TokenVideo} type="video/mp4" />
-                  </PartyTokenVideo>
-                )}
+                <img src={JacuzziTokenImage} alt="$PARTY token" />
                 <div>
                   <h4>PARTY Pool</h4>
                   <div className="poolsGrid-item-header-features">

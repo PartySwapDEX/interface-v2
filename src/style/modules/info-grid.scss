@@ -63,7 +63,7 @@
 .grid-banner-pipo {
   display: block;
   right: 0;
-  height: 10rem;
+  max-height: 10rem;
   bottom: 0;
   z-index: 3;
 }
@@ -84,7 +84,7 @@
     right: 3rem;
   }
   .grid-banner-pipo {
-    height: 12.5rem;
+    max-height: 12.5rem;
     right: 1rem;
   }
 }
@@ -102,7 +102,7 @@
     right: 6rem;
   }
   .grid-banner-pipo {
-    height: unset;
+    max-height: 15rem;
   }
 }
 @media (min-width: 1200px) {
@@ -113,7 +113,7 @@
   .grid-banner-2,
   .grid-banner-3,
   .grid-banner-pipo {
-    height: unset;
+    max-height: 17.5rem;
   }
   .grid-banner-1 {
     height: 15rem;
